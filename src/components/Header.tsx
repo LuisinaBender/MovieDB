@@ -26,13 +26,13 @@ const Header: React.FC<HeaderProps> = ({ onSearch, onGenreSelect, genres, select
     <header className="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-slate-700">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          
           <div className="flex items-center gap-2">
             <Film className="h-8 w-8 text-blue-500" />
             <h1 className="text-xl font-bold text-white hidden sm:block">CineStream</h1>
           </div>
 
-          {/* Desktop Navigation */}
+          
           <nav className="hidden lg:flex items-center gap-6">
             <button
               onClick={() => handleGenreClick(null)}
@@ -59,7 +59,7 @@ const Header: React.FC<HeaderProps> = ({ onSearch, onGenreSelect, genres, select
             ))}
           </nav>
 
-          {/* Search Bar */}
+          
           <form onSubmit={handleSearch} className="flex items-center gap-2">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
@@ -72,7 +72,7 @@ const Header: React.FC<HeaderProps> = ({ onSearch, onGenreSelect, genres, select
               />
             </div>
             
-            {/* Mobile Menu Button */}
+            
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="lg:hidden rounded-full bg-slate-800 p-2 text-slate-400 hover:text-white border border-slate-600"
@@ -82,7 +82,7 @@ const Header: React.FC<HeaderProps> = ({ onSearch, onGenreSelect, genres, select
           </form>
         </div>
 
-        {/* Mobile Navigation */}
+        
         {isMenuOpen && (
           <nav className="lg:hidden mt-4 pb-4 border-t border-slate-700 pt-4">
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">

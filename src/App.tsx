@@ -6,16 +6,23 @@ import { tmdbService } from './services/tmdb';
 import type { Movie, Genre } from './types/movie';
 
 function App() {
+
+  // Estados para manejar las películas y géneros
   const [heroMovie, setHeroMovie] = useState<Movie | null>(null);
   const [popularMovies, setPopularMovies] = useState<Movie[]>([]);
   const [topRatedMovies, setTopRatedMovies] = useState<Movie[]>([]);
   const [nowPlayingMovies, setNowPlayingMovies] = useState<Movie[]>([]);
   const [upcomingMovies, setUpcomingMovies] = useState<Movie[]>([]);
+
   const [genreMovies, setGenreMovies] = useState<Movie[]>([]);
   const [searchResults, setSearchResults] = useState<Movie[]>([]);
+
+  // Estado para manejar los géneros y la búsqueda
   const [genres, setGenres] = useState<Genre[]>([]);
   const [selectedGenre, setSelectedGenre] = useState<number | null>(null);
   const [isSearching, setIsSearching] = useState(false);
+
+  // Estado para manejar la carga de datos
   const [loading, setLoading] = useState({
     hero: true,
     popular: true,
@@ -26,15 +33,14 @@ function App() {
     search: false
   });
 
-  // Load initial data
+  
   useEffect(() => {
     const loadInitialData = async () => {
       try {
-        // Load genres first
+        
         const genresResponse = await tmdbService.getGenres();
         setGenres(genresResponse.genres);
 
-        // Load popular movies and set hero movie
         const popularResponse = await tmdbService.getPopularMovies();
         setPopularMovies(popularResponse.results);
         if (popularResponse.results.length > 0) {
@@ -42,7 +48,7 @@ function App() {
         }
         setLoading(prev => ({ ...prev, popular: false, hero: false }));
 
-        // Load other movie categories
+        //Categorias 
         const [topRatedResponse, nowPlayingResponse, upcomingResponse] = await Promise.all([
           tmdbService.getTopRatedMovies(),
           tmdbService.getNowPlayingMovies(),
@@ -77,7 +83,7 @@ function App() {
     loadInitialData();
   }, []);
 
-  // Handle genre selection
+  
   const handleGenreSelect = async (genreId: number | null) => {
     setSelectedGenre(genreId);
     setIsSearching(false);
@@ -99,7 +105,7 @@ function App() {
     }
   };
 
-  // Handle search
+  
   const handleSearch = async (query: string) => {
     if (!query.trim()) {
       setIsSearching(false);
@@ -142,7 +148,7 @@ function App() {
       )}
 
       <main className="container mx-auto px-4 py-8">
-        {/* Search Results */}
+        
         {isSearching && (
           <MovieSection
             title="Resultados de búsqueda"
@@ -152,7 +158,7 @@ function App() {
           />
         )}
 
-        {/* Genre Movies */}
+        
         {selectedGenre !== null && (
           <MovieSection
             title={`Películas de ${getSelectedGenreName()}`}
@@ -162,7 +168,7 @@ function App() {
           />
         )}
 
-        {/* Default Sections - Only show when not searching or filtering by genre */}
+        
         {!isSearching && selectedGenre === null && (
           <>
             <MovieSection
@@ -196,7 +202,7 @@ function App() {
         )}
       </main>
 
-      {/* Footer */}
+
       <footer className="border-t border-slate-700 bg-slate-900/50 py-8 mt-16">
         <div className="container mx-auto px-4 text-center text-slate-400">
           <p className="text-sm">

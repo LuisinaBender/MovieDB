@@ -82,7 +82,7 @@ const MovieSection: React.FC<MovieSectionProps> = ({
       <h2 className="mb-4 text-2xl font-bold text-white">{title}</h2>
       
       <div className="relative">
-        {/* Scroll Buttons */}
+        
         {canScrollLeft && (
           <button
             onClick={() => scroll('left')}
@@ -103,7 +103,7 @@ const MovieSection: React.FC<MovieSectionProps> = ({
           </button>
         )}
 
-        {/* Movies Container */}
+        
         <div
           ref={scrollContainerRef}
           className="flex gap-4 overflow-x-auto scrollbar-hide pb-4"

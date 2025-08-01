@@ -41,7 +41,7 @@ const Hero: React.FC<HeroProps> = ({ movie, loading = false }) => {
 
   return (
     <div className="relative h-[60vh] sm:h-[70vh] lg:h-[80vh] overflow-hidden">
-      {/* Background Image */}
+      
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
@@ -52,7 +52,7 @@ const Hero: React.FC<HeroProps> = ({ movie, loading = false }) => {
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
       </div>
 
-      {/* Content */}
+      
       <div className="relative h-full flex items-end">
         <div className="container mx-auto px-4 pb-8 sm:pb-16">
           <div className="max-w-2xl">
@@ -60,7 +60,7 @@ const Hero: React.FC<HeroProps> = ({ movie, loading = false }) => {
               {movie.title}
             </h1>
             
-            {/* Movie Details */}
+            
             <div className="flex flex-wrap items-center gap-4 mb-6 text-sm sm:text-base">
               <div className="flex items-center gap-2 text-yellow-400">
                 <Star className="h-5 w-5 fill-current" />
@@ -78,7 +78,7 @@ const Hero: React.FC<HeroProps> = ({ movie, loading = false }) => {
               {movie.overview || 'Sin descripción disponible.'}
             </p>
 
-            {/* Action Buttons */}
+            
             <div className="flex flex-col sm:flex-row gap-4">
               <button className="flex items-center justify-center gap-3 bg-white text-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base hover:bg-slate-200 transition-all duration-300 hover:scale-105 shadow-lg">
                 <Play className="h-5 w-5 fill-current" />

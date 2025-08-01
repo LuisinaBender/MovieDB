@@ -3,10 +3,13 @@ import { Star, CalendarDays } from 'lucide-react';
 import type { Movie } from '../types/movie';
 import { tmdbService } from '../services/tmdb';
 
+
+
 interface MovieCardProps {
   movie: Movie;
   size?: 'small' | 'medium' | 'large';
 }
+
 
 const MovieCard: React.FC<MovieCardProps> = ({ movie, size = 'medium' }) => {
   const sizeClasses = {
@@ -45,14 +48,14 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, size = 'medium' }) => {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           
-          {/* Rating Badge */}
+          
           <div className="absolute top-2 right-2 flex items-center gap-1 rounded-full bg-black/70 px-2 py-1 text-xs font-medium text-yellow-400 backdrop-blur-sm">
             <Star className="h-3 w-3 fill-current" />
             <span>{formatRating(movie.vote_average)}</span>
           </div>
         </div>
 
-        {/* Movie Info */}
+        
         <div className="p-3">
           <h3 className="mb-2 text-sm font-semibold text-white line-clamp-2 group-hover:text-blue-400 transition-colors">
             {movie.title}
@@ -64,7 +67,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, size = 'medium' }) => {
           </div>
         </div>
 
-        {/* Hover Overlay */}
+        
         <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-blue-900/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
       </div>
     </div>
